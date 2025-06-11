@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>9. Systemstart und -shutdown</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+
+    <p>Das Verstehen des Bootprozesses und der Verwaltung von Systemdiensten ist entscheidend, um ein Linux-System effektiv zu verwalten. In diesem Abschnitt wird erklärt, wie der Bootprozess funktioniert, wie man Boot-Parameter verwaltet, wie man Services und Daemons verwaltet und wie der Boot-Manager GRUB genutzt wird.</p>
+
+    <h3>Bootprozess und Init-Systeme</h3>
+    <p>Der Bootprozess eines Linux-Systems ist der Vorgang, bei dem das System von einem ausgeschalteten Zustand bis zur vollen Funktionsfähigkeit hochgefahren wird. Dieser Prozess umfasst mehrere Schritte, bei denen verschiedene Programme und Dienste in einer festgelegten Reihenfolge gestartet werden. Es gibt verschiedene Init-Systeme, die den Bootprozess und das Starten von Systemdiensten verwalten:</p>
+
+    <ul>
+        <li><strong>SysVinit</strong>: Ein älteres Init-System, das auf vielen älteren Linux-Distributionen verwendet wird. Es basiert auf Init-Skripten, die in den Verzeichnissen <code>/etc/init.d/</code> abgelegt sind.</li>
+        <li><strong>Upstart</strong>: Ein früheres Init-System, das in Ubuntu- und einigen anderen Distributionen verwendet wurde, bevor systemd eingeführt wurde. Upstart bietet mehr Flexibilität bei der Verwaltung von Ereignissen.</li>
+        <li><strong>systemd</strong>: Das derzeit am weitesten verbreitete Init-System. Es wurde entwickelt, um den Bootprozess zu beschleunigen und die Verwaltung von Systemdiensten zu vereinfachen. Es ist standardmässig auf den meisten modernen Distributionen wie Ubuntu, CentOS und Fedora.</li>
+    </ul>
+
+    <h3>Verwaltung von Boot-Parametern</h3>
+    <p>Boot-Parameter sind Einstellungen, die das Verhalten des Systems während des Startvorgangs steuern. Diese Parameter werden in der Regel vom Bootloader wie GRUB (Grand Unified Bootloader) verwaltet. Sie können verwendet werden, um den Kernel zu konfigurieren oder das Startverhalten zu ändern, etwa im Falle von Fehlern oder speziellen Startanforderungen.</p>
+
+    <ul>
+        <li><strong>GRUB</strong>: GRUB ist der Standard-Bootloader für viele Linux-Distributionen. Er ermöglicht es, den Kernel auszuwählen und zusätzliche Boot-Parameter festzulegen.</li>
+        <li><strong>Ändern von Boot-Parametern</strong>: Um temporär Boot-Parameter zu ändern, wähle im GRUB-Menü das gewünschte Boot-Image aus und drücke <code>e</code>, um die Konfiguration zu bearbeiten. Ändere dann die Zeile, die mit <code>linux</code> beginnt, und füge die gewünschten Parameter hinzu (z. B. <code>single</code> für den Einzelfenster-Modus).</li>
+    </ul>
+
+    <h4>Beispiel: Hinzufügen von Boot-Parametern in GRUB</h4>
+    <ul>
+        <li>Starte das System und öffne das GRUB-Menü.</li>
+        <li>Wähle den gewünschten Boot-Eintrag aus und drücke <code>e</code>, um den Eintrag zu bearbeiten.</li>
+        <li>Füge am Ende der Zeile, die mit <code>linux</code> beginnt, den gewünschten Parameter hinzu (z. B. <code>nomodeset</code> für die Deaktivierung der grafischen Treiber während des Starts).</li>
+        <li>Drücke <code>Ctrl + X</code>, um das System mit den neuen Parametern zu starten.</li>
+    </ul>
+
+    <h3>Verwaltung von Services und Daemons</h3>
+    <p>Ein Service (oder Daemon) ist ein Hintergrundprozess, der im System läuft, um eine bestimmte Aufgabe zu erfüllen, z. B. das Bereitstellen eines Webservers oder die Verwaltung von Benutzern. Unter systemd werden Dienste als "Units" bezeichnet und mit dem Befehl <code>systemctl</code> verwaltet.</p>
+
+    <ul>
+        <li><strong><code>systemctl</code></strong>: Dies ist das Hauptwerkzeug zur Verwaltung von Services und Daemons unter systemd.</li>
+        <li><strong>Starten eines Services</strong>: Um einen Service zu starten, verwende den Befehl <code>systemctl start</code>.<br>
+            Beispiel: <code>sudo systemctl start apache2</code> - Startet den Apache2-Webserver.</li>
+        <li><strong>Stoppen eines Services</strong>: Um einen Service zu stoppen, verwende den Befehl <code>systemctl stop</code>.<br>
+            Beispiel: <code>sudo systemctl stop apache2</code> - Stoppt den Apache2-Webserver.</li>
+        <li><strong>Überprüfen des Service-Status</strong>: Um den Status eines Services zu überprüfen, verwende den Befehl <code>systemctl status</code>.<br>
+            Beispiel: <code>sudo systemctl status apache2</code> - Zeigt den aktuellen Status des Apache2-Webservers an.</li>
+        <li><strong>Automatisches Starten eines Services beim Booten</strong>: Um sicherzustellen, dass ein Service beim Systemstart automatisch gestartet wird, verwende den Befehl <code>systemctl enable</code>.<br>
+            Beispiel: <code>sudo systemctl enable apache2</code> - Aktiviert den Apache2-Webserver, sodass er beim Start des Systems automatisch startet.</li>
+        <li><strong>Deaktivieren eines Services</strong>: Um zu verhindern, dass ein Service beim Booten gestartet wird, verwende den Befehl <code>systemctl disable</code>.<br>
+            Beispiel: <code>sudo systemctl disable apache2</code> - Deaktiviert den Apache2-Webserver für den automatischen Start.</li>
+    </ul>
+
+    <h3>Boot-Manager (GRUB)</h3>
+    <p>Der Bootloader GRUB ist für den Start des Linux-Kernels zuständig. Er wird vor dem eigentlichen Betriebssystem geladen und ermöglicht es dem Benutzer, zwischen verschiedenen Betriebssystemen oder Kernel-Versionen zu wählen.</p>
+
+    <ul>
+        <li><strong>GRUB-Konfiguration bearbeiten</strong>: Die Konfiguration von GRUB erfolgt in der Datei <code>/etc/default/grub</code>. Hier können Boot-Parameter und andere Optionen festgelegt werden.</li>
+        <li><strong>GRUB neu generieren</strong>: Wenn Änderungen an der <code>grub</code>-Konfigurationsdatei vorgenommen wurden, muss GRUB neu generiert werden, um die Änderungen zu übernehmen.<br>
+            Beispiel: <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code> - Generiert die GRUB-Konfigurationsdatei neu.</li>
+    </ul>
+
+    <h3>Systemstart und Shutdown über <code>systemd</code></h3>
+    <p>Systemd verwaltet den gesamten Systemstart und Shutdown-Prozess. Du kannst systemd auch verwenden, um das System sofort herunterzufahren oder neu zu starten.</p>
+
+    <ul>
+        <li><strong>System neu starten</strong>: Um das System neu zu starten, verwende den Befehl <code>systemctl reboot</code>.<br>
+            Beispiel: <code>sudo systemctl reboot</code> - Startet das System neu.</li>
+        <li><strong>System herunterfahren</strong>: Um das System herunterzufahren, verwende den Befehl <code>systemctl poweroff</code>.<br>
+            Beispiel: <code>sudo systemctl poweroff</code> - Fährt das System herunter.</li>
+    </ul>
+ 
+   
+  </div>
+</body>
+</html>

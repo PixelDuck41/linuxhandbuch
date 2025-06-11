@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    
+    <h1>Linux-Handbuch</h1>
+
+    
+
+    <h2>8. Sicherheit und Benutzerzugriffssteuerung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+    <p>Die Sicherstellung der Systemsicherheit und die Verwaltung des Benutzerzugriffs sind grundlegende Aufgaben eines Administrators. In diesem Abschnitt wird erklärt, wie du dein System sicher konfigurierst, Zugriffsrechte verwaltest und Tools wie SELinux und AppArmor verwendest, um die Sicherheit zu erhöhen.</p>
+
+    <h3>SELinux (Security-Enhanced Linux)</h3>
+    <p>SELinux ist eine Sicherheitsarchitektur für Linux, die von der National Security Agency (NSA) entwickelt wurde. Sie bietet erweiterte Sicherheitsfunktionen, indem sie den Zugriff auf Dateien, Prozesse und Ressourcen auf einer viel detaillierteren Ebene als herkömmliche Linux-Berechtigungen steuert.</p>
+
+    <ul>
+        <li><strong>Mode von SELinux</strong>: Es gibt drei Hauptmodi für SELinux:
+            <ul>
+                <li><strong>Enforcing</strong>: SELinux setzt die Sicherheitsrichtlinien durch und blockiert unbefugte Aktionen.</li>
+                <li><strong>Permissive</strong>: SELinux protokolliert nur Verstösse gegen die Richtlinien, blockiert sie jedoch nicht.</li>
+                <li><strong>Disabled</strong>: SELinux ist vollständig deaktiviert.</li>
+            </ul>
+        </li>
+        <li><strong>SELinux-Status prüfen</strong>: Du kannst den aktuellen Status von SELinux mit dem folgenden Befehl prüfen:
+            <pre><code>sestatus</code></pre>
+        </li>
+        <li><strong>SELinux umschalten</strong>: Um SELinux von permissiv zu enforcing zu wechseln, kannst du die Datei <code>/etc/selinux/config</code> bearbeiten:
+            <pre><code>sudo nano /etc/selinux/config</code></pre>
+            Ändere den Wert von <code>SELINUX=permissive</code> zu <code>SELINUX=enforcing</code> und starte das System neu.
+        </li>
+    </ul>
+
+    <h3>AppArmor</h3>
+    <p>AppArmor ist ein weiteres Sicherheits-Framework für Linux, das eine ähnliche Funktion wie SELinux bietet, aber einfacher zu konfigurieren ist. Es beschränkt die Ressourcen, auf die Programme zugreifen können, und verhindert, dass Programme unbefugte Operationen durchführen.</p>
+
+    <ul>
+        <li><strong>AppArmor aktivieren</strong>: In vielen Distributionen wie Ubuntu ist AppArmor standardmässig aktiviert. Du kannst den Status mit dem Befehl <code>sudo aa-status</code> überprüfen.</li>
+        <li><strong>Profile konfigurieren</strong>: AppArmor verwendet Profile, die beschreiben, auf welche Ressourcen ein Programm zugreifen darf. Du kannst Profile mit dem Befehl <code>sudo aa-complain /path/to/program</code> setzen, um ein Programm im "complain"-Modus auszuführen (d.h. AppArmor protokolliert Verstösse, blockiert jedoch keine).</li>
+    </ul>
+
+    <h3>Firewall-Konfiguration</h3>
+    <p>Die Konfiguration einer Firewall ist eine wichtige Massnahme zur Absicherung deines Systems. Linux bietet mehrere Tools zur Verwaltung von Firewalls, einschliesslich <code>iptables</code>, <code>ufw</code> und <code>firewalld</code>.</p>
+
+    <h4>Verwendung von <code>iptables</code></h4>
+    <p><code>iptables</code> ist das Standardtool zur Verwaltung der Firewall auf Linux-Systemen. Es ermöglicht dir, detaillierte Regeln für den eingehenden und ausgehenden Netzwerkverkehr festzulegen.</p>
+
+    <ul>
+        <li><strong>Alle eingehenden Verbindungen blockieren</strong>: Um alle eingehenden Verbindungen zu blockieren und nur bestimmte zuzulassen:
+            <pre><code>sudo iptables -A INPUT -j DROP</code></pre>
+        </li>
+        <li><strong>Verbindungen auf Port 80 (HTTP) zulassen</strong>: Um HTTP-Verkehr zuzulassen:
+            <pre><code>sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT</code></pre>
+        </li>
+        <li><strong>Regeln speichern</strong>: Um sicherzustellen, dass deine <code>iptables</code>-Regeln nach einem Neustart bestehen bleiben:
+            <pre><code>sudo iptables-save > /etc/iptables/rules.v4</code></pre>
+        </li>
+    </ul>
+
+    <h4>Verwendung von <code>ufw</code> (Uncomplicated Firewall)</h4>
+    <p><code>ufw</code> ist eine benutzerfreundliche Front-End-Software für die Verwaltung von <code>iptables</code>-Regeln. Es vereinfacht die Erstellung und Verwaltung von Firewall-Regeln.</p>
+
+    <ul>
+        <li><strong>Firewall aktivieren</strong>: Um <code>ufw</code> zu aktivieren:
+            <pre><code>sudo ufw enable</code></pre>
+        </li>
+        <li><strong>Verbindung auf Port 22 (SSH) zulassen</strong>: Um SSH-Verkehr zuzulassen:
+            <pre><code>sudo ufw allow 22</code></pre>
+        </li>
+        <li><strong>Firewall-Status überprüfen</strong>: Um den aktuellen Status und die aktiven Regeln von <code>ufw</code> zu überprüfen:
+            <pre><code>sudo ufw status</code></pre>
+        </li>
+    </ul>
+
+    <h4>Verwendung von <code>firewalld</code></h4>
+    <p><code>firewalld</code> ist ein weiteres Werkzeug zur Verwaltung von Firewalls. Es bietet eine einfachere Möglichkeit, Regeln zu definieren und Änderungen vorzunehmen, ohne die <code>iptables</code> direkt zu bearbeiten.</p>
+
+    <ul>
+        <li><strong>Firewall aktivieren</strong>: Um <code>firewalld</code> zu aktivieren:
+            <pre><code>sudo systemctl start firewalld</code></pre>
+        </li>
+        <li><strong>Ports freigeben</strong>: Um Port 80 (HTTP) zu öffnen:
+            <pre><code>sudo firewall-cmd --zone=public --add-port=80/tcp --permanent</code></pre>
+        </li>
+        <li><strong>Firewall neu laden</strong>: Nachdem du eine Regel geändert hast, lade die Firewall neu:
+            <pre><code>sudo firewall-cmd --reload</code></pre>
+        </li>
+    </ul>
+
+    <h3>SSH (Sicherer Fernzugriff)</h3>
+    <p>SSH (Secure Shell) ist ein Protokoll, das eine sichere Verbindung zu einem entfernten Linux-Server ermöglicht. Es ist eines der wichtigsten Tools für die Fernwartung von Servern.</p>
+
+    <ul>
+        <li><strong>SSH-Server installieren</strong>: Um den SSH-Server auf einem Linux-Server zu installieren:
+            <pre><code>sudo apt install openssh-server</code></pre>
+        </li>
+        <li><strong>SSH-Dienst starten</strong>: Um den SSH-Dienst zu starten:
+            <pre><code>sudo systemctl start ssh</code></pre>
+        </li>
+        <li><strong>SSH-Status überprüfen</strong>: Um den Status des SSH-Dienstes zu überprüfen:
+            <pre><code>sudo systemctl status ssh</code></pre>
+        </li>
+        <li><strong>SSH auf einen entfernten Server verbinden</strong>: Um sich mit einem entfernten Server über SSH zu verbinden:
+            <pre><code>ssh user@hostname_or_ip</code></pre>
+        </li>
+    </ul>
+
+    <h3>Sicherheitsupdates und Patches</h3>
+    <p>Die regelmässige Installation von Sicherheitsupdates ist wichtig, um dein System vor bekannten Sicherheitslücken zu schützen. Viele Distributionen bieten Tools zur automatischen Aktualisierung von Sicherheitsupdates an.</p>
+
+    <ul>
+        <li><strong>Automatische Sicherheitsupdates aktivieren</strong>: In Debian-basierten Distributionen (wie Ubuntu) kannst du automatische Sicherheitsupdates mit dem folgenden Befehl aktivieren:
+            <pre><code>sudo apt install unattended-upgrades</code></pre>
+        </li>
+        <li><strong>Manuelle Updates durchführen</strong>: Du kannst die neuesten Sicherheitsupdates manuell installieren, indem du:
+            <pre><code>sudo apt update && sudo apt upgrade</code></pre>
+        </li>
+    </ul>
+
+    <h3>Überwachung von Benutzeraktivitäten (z.B. <code>auditd</code>)</h3>
+    <p>Mit Tools wie <code>auditd</code> (Audit Daemon) kannst du Benutzeraktivitäten überwachen und protokollieren. Dies ist besonders nützlich für die Sicherheitsüberprüfung und forensische Analysen.</p>
+
+    <ul>
+        <li><strong><code>auditd</code> installieren</strong>: Um den Audit Daemon zu installieren:
+            <pre><code>sudo apt install auditd</code></pre>
+        </li>
+        <li><strong>Audit-Logs anzeigen</strong>: Um die Audit-Logs anzuzeigen, benutze den Befehl:
+            <pre><code>sudo ausearch -m avc</code></pre>
+        </li>
+    </ul>
+ 
+   
+  </div>
+</body>
+</html>

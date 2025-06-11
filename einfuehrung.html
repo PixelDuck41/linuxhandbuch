@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>1. Einführung in Linux</h2>
+
+
+    <a href="index.html"> Zurück zum Start</a>
+    
+    <h3>Was ist Linux?</h3>
+    <p>Linux ist ein Open-Source-Betriebssystem, das ursprünglich 1991 von Linus Torvalds entwickelt wurde. Es ist eine Unix-ähnliche Plattform, die für ihre Stabilität, Sicherheit und Flexibilität bekannt ist. Linux ist nicht nur als Betriebssystem für Desktops und Server weit verbreitet, sondern auch für mobile Geräte, Embedded Systems und viele andere Anwendungsgebiete. Es basiert auf dem Linux-Kernel, der das Herzstück des Systems bildet und direkt mit der Hardware interagiert.</p>
+    <p>Im Vergleich zu proprietären Betriebssystemen wie Windows oder macOS ist Linux kostenlos und wird von einer grossen Gemeinschaft von Entwicklern kontinuierlich verbessert. Es bietet eine riesige Auswahl an Software, die unter der Open-Source-Lizenz veröffentlicht wird, was bedeutet, dass der Quellcode von jedem eingesehen, modifiziert und verteilt werden kann.</p>
+
+    <h3>Die verschiedenen Linux-Distributionen</h3>
+    <p>Linux ist nicht nur ein einziges Betriebssystem, sondern es gibt eine Vielzahl von "Distributionen" (kurz: Distros). Eine Distribution ist eine Sammlung von Software, die zusammen mit dem Linux-Kernel gebündelt ist. Jede Distribution verfolgt unterschiedliche Ziele und richtet sich an unterschiedliche Benutzergruppen. Hier sind einige der bekanntesten:</p>
+    <ul>
+        <li><strong>Ubuntu</strong>: Eine benutzerfreundliche Distribution, die häufig für Anfänger empfohlen wird. Sie ist auf Desktop- und Server-Umgebungen ausgelegt und bietet eine grosse Menge an Software-Paketen.</li>
+        <li><strong>Debian</strong>: Eine der ältesten und stabilsten Linux-Distributionen. Debian legt grossen Wert auf Stabilität und Sicherheit und ist die Basis für viele andere Distributionen, einschliesslich Ubuntu.</li>
+        <li><strong>Fedora</strong>: Eine von der Community unterstützte Distribution, die oft als Testumgebung für neue Technologien dient. Fedora ist bekannt für seine neueste Software und fortschrittlichen Features.</li>
+        <li><strong>CentOS / RHEL</strong>: CentOS (Community Enterprise Operating System) und Red Hat Enterprise Linux (RHEL) sind Distributionen, die auf Unternehmensumgebungen ausgerichtet sind und besonders in Server-Umgebungen populär sind.</li>
+        <li><strong>Arch Linux</strong>: Eine minimalistische Distributin, die erfahrene Benutzer anspricht, die ihre Installation von Grund auf anpassen möchten.</li>
+        <li><strong>openSUSE</strong>: Eine Distribution, die sowohl auf Entwickler als auch auf Unternehmen abzielt, mit starker Unterstützung für Virtualisierung und Cloud-Technologien.</li>
+        <li><strong>Kali Linux</strong>: Eine Distribution, die speziell für Penetration Testing und Sicherheitstests entwickelt wurde.</li>
+    </ul>
+    <p>Jede dieser Distributionen bringt unterschiedliche Werkzeuge, Software-Pakete und Paketverwaltungssysteme mit sich, aber sie alle basieren auf dem Linux-Kernel.</p>
+
+    <h3>Was ist der Linux-Kernel?</h3>
+    <p>Der Kernel ist das Herzstück jedes Linux-Systems. Er stellt eine Verbindung zwischen der Hardware und der Software des Systems her und verwaltet wichtige Aufgaben wie:</p>
+    <ul>
+        <li><strong>Speicherverwaltung</strong>: Der Kernel verwaltet den Arbeitsspeicher des Systems und sorgt dafür, dass verschiedene Programme und Prozesse ihren eigenen Speicherbereich haben, um Konflikte zu vermeiden.</li>
+        <li><strong>Prozessverwaltung</strong>: Er sorgt dafür, dass alle laufenden Prozesse (Programme) korrekt ausgeführt werden und teilt den Prozessor (CPU) nach Bedarf zwischen den Prozessen auf.</li>
+        <li><strong>Hardware-Abstraktion</strong>: Der Kernel ermöglicht es Software-Anwendungen, mit der Hardware zu kommunizieren, ohne sich um die Details der spezifischen Hardware kümmern zu müssen. Er übersetzt die Anfragen der Software in Anweisungen, die von der Hardware verstanden werden.</li>
+        <li><strong>Dateisystemverwaltung</strong>: Der Kernel verwaltet die Organisation und den Zugriff auf Dateien und Verzeichnisse auf der Festplatte oder anderen Speichermedien.</li>
+    </ul>
+    <p>Der Linux-Kernel ist modular aufgebaut, was bedeutet, dass er an verschiedene Hardware-Architekturen und Anwendungsfälle angepasst werden kann. Es gibt viele Versionen des Kernels, die regelmässig aktualisiert werden, um Fehler zu beheben und neue Funktionen hinzuzufügen.</p>
+
+    <h3>Open-Source-Philosophie</h3>
+    <p>Einer der grössten Vorteile von Linux ist seine Open-Source-Natur. Das bedeutet, dass der Quellcode des Kernels und der meisten Software, die auf Linux läuft, öffentlich zugänglich ist. Dies ermöglicht es Entwicklern weltweit, Fehler zu beheben, neue Funktionen hinzuzufügen und die Software an ihre eigenen Bedürfnisse anzupassen.</p>
+    <p>Die Open-Source-Philosophie fördert Transparenz und Zusammenarbeit. Da jeder den Code einsehen und verändern kann, entstehen oft innovative Lösungen, die von der Gemeinschaft entwickelt und getestet werden. Dies steht im Gegensatz zu proprietären Softwaremodellen, bei denen der Quellcode geheim gehalten wird.</p>
+    <p>Ein weiteres grosses Plus der Open-Source-Software ist, dass sie in der Regel kostenlos ist, was sie besonders attraktiv für Unternehmen und Privatpersonen macht, die keine Lizenzgebühren zahlen möchten.</p>
+
+    <h3>Vorteile von Linux</h3>
+    <p>Es gibt viele Gründe, warum Benutzer und Unternehmen Linux wählen:</p>
+    <ul>
+        <li><strong>Stabilität und Zuverlässigkeit</strong>: Linux ist für seine Stabilität bekannt. Es ist weniger anfällig für Abstürze und bietet eine ausgezeichnete Leistung unter hoher Last. Aus diesem Grund wird Linux oft in Serverumgebungen verwendet, wo kontinuierlicher Betrieb erforderlich ist.</li>
+        <li><strong>Sicherheit</strong>: Linux gilt als sicherer als viele andere Betriebssysteme, da es von Grund auf so konzipiert wurde, dass es eine strikte Trennung zwischen Benutzerrechten und Systemrechten gibt. Ausserdem wird die Linux-Community ständig von Sicherheitslücken und Fehlern informiert, sodass diese schnell behoben werden.</li>
+        <li><strong>Flexibilität</strong>: Linux bietet eine enorme Flexibilität. Sie können es für alles verwenden, vom einfachen Desktop-Computer bis hin zu leistungsstarken Servern oder sogar eingebetteten Geräten.</li>
+        <li><strong>Kostenlos und Open Source</strong>: Linux und die meisten seiner Anwendungen sind kostenlos, was es zu einer kostengünstigen Lösung für Unternehmen und Privatpersonen macht.</li>
+        <li><strong>Grosse Gemeinschaft und Unterstützung</strong>: Da Linux weltweit von Millionen von Nutzern verwendet wird, gibt es eine riesige Community, die bei der Fehlerbehebung und Unterstützung hilft. Es gibt zahlreiche Foren, Webseiten, Mailing-Listen und Wikis, die als Ressourcen zur Verfügung stehen.</li>
+        <li><strong>Vielfältige Software und Tools</strong>: Linux bietet eine enorme Auswahl an Software, die alle möglichen Anwendungsfälle abdeckt, von Web-Entwicklung über Datenanalyse bis hin zu Grafikdesign und Video-Bearbeitung.</li>
+    </ul>
+
+
+   
+  </div>
+</body>
+</html>

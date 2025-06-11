@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+
+    <h2>10. Virtualisierung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+    <p>Virtualisierung ist eine Technologie, die es ermöglicht, mehrere virtuelle Maschinen (VMs) auf einem einzigen physischen Host-System zu betreiben. Diese Technologie wird häufig in Serverumgebungen eingesetzt, um die Ressourcennutzung zu optimieren, die Isolierung zu erhöhen und die Verwaltung von IT-Infrastrukturen zu vereinfachen. In diesem Abschnitt wird die Virtualisierung unter Linux behandelt, einschliesslich der Verwendung von KVM, VirtualBox, VMware und Docker.</p>
+
+    <h3>Einführung in Virtualisierung</h3>
+    <p>Virtualisierung ermöglicht es, mehrere virtuelle Instanzen eines Betriebssystems auf einer einzigen physischen Maschine auszuführen. Dies hat viele Vorteile, darunter die Reduzierung von Hardwarekosten und die Verbesserung der Flexibilität. Es gibt verschiedene Arten von Virtualisierung, die jeweils unterschiedliche Anforderungen und Anwendungsfälle abdecken:</p>
+
+    <ul>
+        <li><strong>Vollvirtualisierung</strong>: Bei der Vollvirtualisierung wird die gesamte Hardware des Hosts simuliert. Jede virtuelle Maschine (VM) läuft unabhängig und hat ihre eigene virtuelle Hardware. Beispiele hierfür sind KVM, VMware und VirtualBox.</li>
+        <li><strong>Paravirtualisierung</strong>: Hierbei interagieren die VMs direkt mit dem Hypervisor und nutzen dessen Ressourcen effizienter. Paravirtualisierung erfordert, dass die Gastbetriebssysteme speziell für diese Technik angepasst werden. Ein Beispiel hierfür ist Xen.</li>
+        <li><strong>Containerisierung</strong>: Container sind leichtgewichtige VMs, die keine eigene vollständige virtuelle Hardware benötigen. Sie teilen sich denselben Kernel, bieten jedoch eine isolierte Umgebung für Anwendungen. Docker und Podman sind bekannte Beispiele für Container-Technologien.</li>
+    </ul>
+
+    <h3>Virtualisierung mit KVM</h3>
+    <p>KVM (Kernel-based Virtual Machine) ist die am häufigsten verwendete Virtualisierungstechnologie auf Linux. Es wird direkt in den Linux-Kernel integriert und bietet eine vollständige Virtualisierung. KVM ermöglicht es, mehrere virtuelle Maschinen auf einem Host zu betreiben, wobei jede VM ein vollständiges, eigenständiges System ist.</p>
+
+    <ul>
+        <li><strong>Installation von KVM</strong>: Um KVM auf einem Debian-basierten System wie Ubuntu zu installieren, verwende den folgenden Befehl:
+            <pre><code>sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager</code></pre>
+        </li>
+        <li><strong>Überprüfen der KVM-Installation</strong>: Um sicherzustellen, dass KVM auf deinem System läuft, kannst du den folgenden Befehl verwenden:
+            <pre><code>sudo kvm-ok</code></pre>
+            Dies zeigt an, ob dein Prozessor Virtualisierung unterstützt und ob KVM korrekt installiert ist.</li>
+        <li><strong>Virt-Manager</strong>: Virt-Manager ist eine grafische Benutzeroberfläche, die zur Verwaltung von KVM-basierten VMs verwendet werden kann. Nach der Installation kannst du Virt-Manager starten, um VMs zu erstellen und zu verwalten:
+            <pre><code>virt-manager</code></pre>
+        </li>
+    </ul>
+
+    <h3>Virtualisierung mit VirtualBox</h3>
+    <p>VirtualBox ist eine beliebte Virtualisierungssoftware, die sowohl auf Windows als auch auf Linux läuft. Sie ermöglicht es, mehrere virtuelle Maschinen auf einem einzigen physischen Host zu betreiben. VirtualBox ist einfach zu installieren und zu verwenden, und es bietet eine benutzerfreundliche grafische Oberfläche.</p>
+
+    <ul>
+        <li><strong>Installation von VirtualBox</strong>: VirtualBox kann auf einem Debian-basierten System mit folgendem Befehl installiert werden:
+            <pre><code>sudo apt install virtualbox</code></pre>
+        </li>
+        <li><strong>Erstellen einer neuen VM in VirtualBox</strong>: Nach der Installation von VirtualBox kannst du eine neue VM über die grafische Oberfläche erstellen, indem du auf "Neu" klickst und die erforderlichen Parameter wie Betriebssystemtyp, Speicher und Festplatte festlegst.</li>
+    </ul>
+
+    <h3>Virtualisierung mit VMware</h3>
+    <p>VMware ist eine der führenden Virtualisierungsplattformen und wird hauptsächlich in Unternehmensumgebungen eingesetzt. VMware bietet Lösungen für die Server- und Desktop-Virtualisierung. Es gibt eine kostenlose Version namens VMware Workstation Player, die für private und nicht-kommerzielle Nutzung geeignet ist.</p>
+
+    <ul>
+        <li><strong>Installation von VMware Workstation Player</strong>: VMware Workstation Player kann von der VMware-Website heruntergeladen werden. Nach dem Herunterladen des Installationspakets kannst du es mit den folgenden Befehlen installieren:
+            <pre><code>sudo apt install build-essential</code></pre>
+            Lade dann das Installationspaket von der VMware-Website herunter und installiere es manuell.</li>
+        <li><strong>Erstellen einer neuen VM in VMware</strong>: Ähnlich wie bei VirtualBox kannst du eine neue VM in VMware erstellen, indem du die entsprechende ISO-Datei auswählst und die Installation über die grafische Oberfläche durchführst.</li>
+    </ul>
+
+    <h3>Containerisierung mit Docker und Podman</h3>
+    <p>Containerisierung ist eine leichtgewichtige Form der Virtualisierung, bei der Anwendungen in isolierten Containern ausgeführt werden. Docker und Podman sind zwei der bekanntesten Tools für die Containerisierung. Container teilen sich denselben Kernel, was sie ressourcenschonender macht als virtuelle Maschinen.</p>
+
+    <ul>
+        <li><strong>Docker</strong>: Docker ist eine Plattform, die es ermöglicht, Anwendungen in Containern zu entwickeln, bereitzustellen und auszuführen. Docker stellt sicher, dass eine Anwendung und ihre Abhängigkeiten immer in der gleichen Umgebung ausgeführt werden.</li>
+        <li><strong>Installation von Docker</strong>: Um Docker auf einem Debian-basierten System zu installieren, führe die folgenden Befehle aus:
+            <pre><code>sudo apt update</code></pre>
+            <pre><code>sudo apt install docker.io</code></pre>
+        </li>
+        <li><strong>Docker-Container starten</strong>: Um einen Docker-Container zu starten, verwende den folgenden Befehl:
+            <pre><code>sudo docker run -it ubuntu bash</code></pre>
+            Dieser Befehl startet einen Container mit der Ubuntu-Distribution und öffnet eine interaktive Bash-Shell.</li>
+        <li><strong>Podman</strong>: Podman ist ein weiteres Containerization-Tool, das als Open-Source-Alternative zu Docker dient. Es bietet die gleiche Funktionalität, jedoch ohne die Notwendigkeit eines zentralen Daemons, was es als benutzerfreundlicher und sicherer macht.</li>
+        <li><strong>Installation von Podman</strong>: Um Podman auf einem Debian-basierten System zu installieren, führe diesen Befehl aus:
+            <pre><code>sudo apt install podman</code></pre>
+        </li>
+    </ul>
+
+    <h3>Virtualisierungs-Tools und -Befehle</h3>
+    <p>Abhängig von der verwendeten Virtualisierungslösung gibt es verschiedene Tools und Befehle, mit denen virtuelle Maschinen verwaltet werden können:</p>
+
+    <ul>
+        <li><strong><code>virt-manager</code></strong>: Eine grafische Benutzeroberfläche zur Verwaltung von VMs unter KVM.</li>
+        <li><strong><code>virsh</code></strong>: Ein Kommandozeilenwerkzeug zur Verwaltung von VMs, das mit KVM verwendet wird. Es ermöglicht das Erstellen, Starten und Stoppen von VMs.</li>
+        <li><strong><code>docker ps</code></strong>: Zeigt alle laufenden Docker-Container an.</li>
+        <li><strong><code>podman ps</code></strong>: Zeigt alle laufenden Podman-Container an.</li>
+    </ul>
+   
+  </div>
+</body>
+</html>

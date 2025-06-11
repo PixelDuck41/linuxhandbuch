@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>2. Grundlagen der Linux-Shell</h2>
+
+    <a href="index.html"> Zurück zum Start</a>
+    
+    <h3>Was ist die Shell?</h3>
+    <p>Die Shell ist ein Programmschnittstelle zwischen dem Benutzer und dem Betriebssystem. Sie ermöglicht es, mit dem System zu kommunizieren, indem man Befehle eingibt, die dann vom Kernel verarbeitet werden. Ursprünglich war die Shell die einzige Möglichkeit, mit Unix-basierten Systemen zu interagieren, aber sie wird auch heute noch genutzt, da sie sehr mächtig und flexibel ist.</p>
+    <p>Es gibt verschiedene Arten von Shells, die sich in ihrer Funktionalität und Benutzerfreundlichkeit unterscheiden. Die bekanntesten sind:</p>
+    <ul>
+        <li><strong>Bash (Bourne Again Shell)</strong>: Eine der populärsten Shells, die auf der ursprünglichen Bourne-Shell basiert. Sie bietet viele erweiterte Funktionen und ist standardmässig auf vielen Linux-Distributionen installiert.</li>
+        <li><strong>Zsh (Z Shell)</strong>: Eine erweiterte Shell, die viele Funktionen wie Autovervollständigung, erweiterte Tastenbelegung und eine benutzerfreundlichere Handhabung von Dateimustern bietet.</li>
+        <li><strong>Fish (Friendly Interactive Shell)</strong>: Eine moderne Shell, die speziell für eine benutzerfreundliche Erfahrung entwickelt wurde, mit sofortiger Autovervollständigung und syntaktischer Highlighting.</li>
+    </ul>
+
+    <h3>Überblick über die gängigsten Shells</h3>
+    <p><strong>Bash</strong>: Sie ist die Standard-Shell in vielen Distributionen wie Ubuntu, CentOS und Debian. Sie bietet eine Reihe von Funktionen wie Skriptunterstützung, Variablen, Schleifen und Bedingungen, die sie zu einer leistungsstarken Wahl für Benutzer und Administratoren machen.</p>
+    <p><strong>Zsh</strong>: Zsh hat eine erweiterte Tab-Vervollständigung, die sehr nützlich sein kann. Ausserdem bietet sie erweiterte Funktionen wie <code>glob</code> (Mustererkennung) und eine flexiblere Gestaltung der Kommandozeilenumgebung. Viele Benutzer von Zsh nutzen Plugins und Themes, um ihre Erfahrung weiter zu verbessern.</p>
+    <p><strong>Fish</strong>: Fish konzentriert sich darauf, dem Benutzer eine moderne und benutzerfreundliche Umgebung zu bieten. Sie hat eine farbige Kommandozeilen-Ausgabe, automatische Vorschläge und eine benutzerfreundliche Syntax.</p>
+
+    <h3>Navigation im Dateisystem</h3>
+    <p>Um effektiv mit einem Linux-System zu arbeiten, ist es wichtig, das Dateisystem zu verstehen und die richtigen Befehle zur Navigation zu kennen.</p>
+
+    <ul>
+        <li><strong><code>cd</code> (Change Directory)</strong>: Mit diesem Befehl kann der Benutzer das Verzeichnis wechseln. Beispielsweise wechselt <code>cd /home/user/</code> in das Verzeichnis <code>/home/user/</code>.</li>
+        <li><strong><code>ls</code> (List)</strong>: Mit diesem Befehl können die Dateien und Verzeichnisse im aktuellen Verzeichnis angezeigt werden. Beispiel: <code>ls -l</code> zeigt eine detaillierte Liste der Dateien und Verzeichnisse an.</li>
+        <li><strong><code>pwd</code> (Print Working Directory)</strong>: Dieser Befehl zeigt den aktuellen Pfad des Arbeitsverzeichnisses an. Beispiel: <code>pwd</code> gibt den vollständigen Pfad des aktuellen Verzeichnisses aus, zum Beispiel <code>/home/user/Documents</code>.</li>
+    </ul>
+
+    <h3>Dateimanagement</h3>
+    <p>Die Shell bietet eine Vielzahl von Befehlen, mit denen Benutzer Dateien und Verzeichnisse verwalten können:</p>
+
+    <ul>
+        <li><strong><code>cp</code> (Copy)</strong>: Dieser Befehl wird verwendet, um Dateien zu kopieren. Beispiel: <code>cp datei.txt /home/user/backup/</code> kopiert die Datei <code>datei.txt</code> in das Verzeichnis <code>/home/user/backup/</code>.</li>
+        <li><strong><code>mv</code> (Move)</strong>: Mit diesem Befehl können Dateien verschoben oder umbenannt werden. Beispiel: <code>mv datei.txt /home/user/dokumente/neu/</code> verschiebt die Datei <code>datei.txt</code> in das Verzeichnis <code>/home/user/dokumente/neu/</code>.</li>
+        <li><strong><code>rm</code> (Remove)</strong>: Dieser Befehl wird verwendet, um Dateien oder Verzeichnisse zu löschen. Beispiel: <code>rm datei.txt</code> löscht die Datei <code>datei.txt</code>.</li>
+        <li><strong><code>touch</code></strong>: Erstellt eine neue leere Datei oder ändert das Änderungsdatum einer bestehenden Datei. Beispiel: <code>touch neue_datei.txt</code> erstellt die Datei <code>neue_datei.txt</code>, wenn sie noch nicht existiert.</li>
+    </ul>
+
+    <h3>Berechtigungen und Eigentümer</h3>
+    <p>In Linux sind Dateiberechtigungen ein wichtiger Bestandteil der Systemadministration. Jede Datei oder jedes Verzeichnis hat bestimmte Berechtigungen, die festlegen, wer darauf zugreifen kann und welche Aktionen (Lesen, Schreiben, Ausführen) zulässig sind.</p>
+
+    <ul>
+        <li><strong><code>chmod</code> (Change Mode)</strong>: Mit diesem Befehl können die Berechtigungen einer Datei geändert werden. Beispiel: <code>chmod +x datei.sh</code> macht die Datei <code>datei.sh</code> ausführbar.</li>
+        <li><strong><code>chown</code> (Change Owner)</strong>: Dieser Befehl ändert den Eigentümer und die Gruppe einer Datei oder eines Verzeichnisses. Beispiel: <code>chown user:group datei.txt</code> ändert den Eigentümer von <code>datei.txt</code> zu <code>user</code> und die Gruppe zu <code>group</code>.</li>
+        <li><strong><code>chgrp</code> (Change Group)</strong>: Ändert nur die Gruppe einer Datei. Beispiel: <code>chgrp admin datei.txt</code> ändert die Gruppe von <code>datei.txt</code> auf <code>admin</code>.</li>
+    </ul>
+
+    <h3>Suchen von Dateien</h3>
+    <p>Es gibt mehrere nützliche Befehle, um nach Dateien auf einem Linux-System zu suchen.</p>
+
+    <ul>
+        <li><strong><code>find</code></strong>: Mit diesem Befehl können Sie nach Dateien in einem Verzeichnisbaum suchen, basierend auf verschiedenen Kriterien wie Name, Datum oder Grösse. Beispiel: <code>find /home/user -name "*.txt"</code> sucht nach allen <code>.txt</code>-Dateien im Verzeichnis <code>/home/user</code> und seinen Unterverzeichnissen.</li>
+        <li><strong><code>locate</code></strong>: Eine schnellere Möglichkeit, nach Dateien zu suchen, basierend auf einer Datenbank, die regelmässig aktualisiert wird. Beispiel: <code>locate datei.txt</code> gibt den Pfad zu allen Dateien zurück, die <code>datei.txt</code> im Namen haben.</li>
+        <li><strong><code>grep</code></strong>: Mit <code>grep</code> können Sie in Textdateien nach Mustern suchen. Es wird oft in Kombination mit anderen Befehlen wie <code>ls</code> oder <code>find</code> verwendet. Beispiel: <code>grep "Fehler" logdatei.txt</code> sucht nach dem Wort "Fehler" in der Datei <code>logdatei.txt</code>.</li>
+    </ul>
+
+  </div>
+</body>
+</html>

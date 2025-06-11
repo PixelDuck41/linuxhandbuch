@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>5. Netzwerkverwaltung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+    <p>Die Netzwerkverwaltung in Linux umfasst die Konfiguration von Netzwerkschnittstellen, das Zuweisen von IP-Adressen, die Verwaltung von Gateways und DNS-Servern sowie die Durchführung von Netzwerkfehlerbehebungen. In diesem Abschnitt werden die grundlegenden Befehle und Techniken zur Verwaltung und Diagnose von Netzwerken behandelt.</p>
+
+    <h3>Netzwerkkonfiguration</h3>
+    <p>Linux bietet eine Vielzahl von Tools zur Netzwerkkonfiguration. Die gängigsten Tools zur Verwaltung von Netzwerkschnittstellen sind <code>ifconfig</code> und <code>ip</code>.</p>
+
+    <h4>Verwendung von <code>ifconfig</code></h4>
+    <p>Das Kommando <code>ifconfig</code> wird verwendet, um Netzwerkschnittstellen zu konfigurieren und die Netzwerkverbindungen zu überwachen.</p>
+
+    <ul>
+        <li><strong><code>ifconfig</code></strong>: Zeigt die Konfiguration der Netzwerkinterfaces an.<br>
+            Beispiel: <code>ifconfig</code> - Zeigt alle aktiven Netzwerkinterfaces an.</li>
+        <li><strong><code>ifconfig eth0</code></strong>: Zeigt die Konfiguration des Interfaces <code>eth0</code> an.<br>
+            Beispiel: <code>ifconfig eth0</code> - Zeigt detaillierte Informationen über das Interface <code>eth0</code> an.</li>
+        <li><strong><code>ifconfig eth0 up</code></strong>: Aktiviert das Netzwerkinterface <code>eth0</code>.<br>
+            Beispiel: <code>sudo ifconfig eth0 up</code> - Aktiviert das Netzwerkinterface.</li>
+        <li><strong><code>ifconfig eth0 down</code></strong>: Deaktiviert das Netzwerkinterface <code>eth0</code>.<br>
+            Beispiel: <code>sudo ifconfig eth0 down</code> - Deaktiviert das Netzwerkinterface.</li>
+    </ul>
+
+    <h4>Verwendung von <code>ip</code></h4>
+    <p>Das <code>ip</code>-Kommando ist das modernere und bevorzugte Werkzeug zur Netzwerkadministration. Es ersetzt <code>ifconfig</code> und bietet eine mächtigere Schnittstelle zur Konfiguration von Netzwerkschnittstellen.</p>
+
+    <ul>
+        <li><strong><code>ip a</code></strong>: Zeigt alle Netzwerkinterfaces und deren IP-Adressen an.<br>
+            Beispiel: <code>ip a</code> - Listet alle Netzwerkschnittstellen mit deren aktuellen IP-Adressen auf.</li>
+        <li><strong><code>ip addr add 192.168.1.100/24 dev eth0</code></strong>: Fügt eine IP-Adresse zu einem Interface hinzu.<br>
+            Beispiel: <code>sudo ip addr add 192.168.1.100/24 dev eth0</code> - Fügt die IP-Adresse `192.168.1.100` zum Interface <code>eth0</code> hinzu.</li>
+        <li><strong><code>ip link set eth0 up</code></strong>: Aktiviert das Interface.<br>
+            Beispiel: <code>sudo ip link set eth0 up</code> - Aktiviert das Interface <code>eth0</code>.</li>
+        <li><strong><code>ip link set eth0 down</code></strong>: Deaktiviert das Interface.<br>
+            Beispiel: <code>sudo ip link set eth0 down</code> - Deaktiviert das Interface <code>eth0</code>.</li>
+    </ul>
+
+    <h3>IP-Adressen, Subnetze, Gateways</h3>
+    <p>Ein wichtiger Teil der Netzwerkkonfiguration ist das Zuweisen von IP-Adressen und das Definieren von Subnetzen und Gateways.</p>
+
+    <ul>
+        <li><strong>IP-Adresse</strong>: Eine IP-Adresse wird verwendet, um ein Gerät im Netzwerk eindeutig zu identifizieren. Beispiel: `192.168.1.100`.</li>
+        <li><strong>Subnetzmaske</strong>: Eine Subnetzmaske definiert, welcher Teil einer IP-Adresse das Netzwerk und welcher Teil das Gerät im Netzwerk darstellt. Beispiel: `255.255.255.0`.</li>
+        <li><strong>Gateway</strong>: Ein Gateway ist ein Gerät, das als Vermittler zwischen verschiedenen Netzwerken dient. In der Regel handelt es sich dabei um den Router.</li>
+    </ul>
+
+    <h4>Beispiel: IP-Adresse und Gateway setzen mit <code>ip</code></h4>
+    <ul>
+        <li><strong><code>ip addr add</code></strong>: Zuweisen einer IP-Adresse.<br>
+            Beispiel: <code>sudo ip addr add 192.168.1.100/24 dev eth0</code> - Setzt die IP-Adresse `192.168.1.100` für das Interface <code>eth0</code>.</li>
+        <li><strong><code>ip route add default via</code></strong>: Setzt das Standard-Gateway.<br>
+            Beispiel: <code>sudo ip route add default via 192.168.1.1</code> - Setzt das Standard-Gateway auf `192.168.1.1`.</li>
+    </ul>
+
+    <h3>Netzwerkanalyse und Fehlerbehebung</h3>
+    <p>Die Netzwerkanalyse und Fehlerbehebung sind ein wichtiger Teil der Netzwerkverwaltung. Hier sind einige der gängigsten Tools und Befehle, die dir helfen können, Netzwerkprobleme zu diagnostizieren.</p>
+
+    <ul>
+        <li><strong><code>ping</code></strong>: Mit diesem Befehl kannst du testen, ob eine Verbindung zu einem anderen Host im Netzwerk besteht.<br>
+            Beispiel: <code>ping 192.168.1.1</code> - Sendet Echo-Anfragen an die IP-Adresse `192.168.1.1`.</li>
+        <li><strong><code>traceroute</code></strong>: Zeigt die Route, die ein Paket zu einem Zielhost nimmt, und hilft dabei, Netzwerkengpässe zu identifizieren.<br>
+            Beispiel: <code>traceroute www.example.com</code> - Zeigt den Pfad zum Host `www.example.com`.</li>
+        <li><strong><code>netstat</code></strong>: Zeigt Netzwerkverbindungen, Routing-Tabellen und Netzwerkstatistiken an.<br>
+            Beispiel: <code>netstat -tuln</code> - Listet alle offenen Ports und Verbindungen auf.</li>
+        <li><strong><code>ss</code></strong>: Ein modernerer Ersatz für <code>netstat</code>, der eine detailliertere Ansicht über Sockets und Verbindungen bietet.<br>
+            Beispiel: <code>ss -tuln</code> - Zeigt ebenfalls alle offenen Ports und Verbindungen an.</li>
+    </ul>
+
+    <h3>Firewall und Sicherheit</h3>
+    <p>Die Konfiguration der Firewall ist ein entscheidender Bestandteil der Netzwerksicherheit. Linux bietet verschiedene Tools wie <code>iptables</code>, <code>ufw</code> und <code>firewalld</code>, um die Netzwerksicherheit zu gewährleisten.</p>
+
+    <h4>Verwendung von <code>ufw</code> (Uncomplicated Firewall)</h4>
+    <p><code>ufw</code> ist eine benutzerfreundliche Front-End für die Verwaltung von <code>iptables</code>. Mit <code>ufw</code> kannst du einfach Firewall-Regeln hinzufügen und entfernen.</p>
+
+    <ul>
+        <li><strong><code>ufw enable</code></strong>: Aktiviert die Firewall.<br>
+            Beispiel: <code>sudo ufw enable</code> - Aktiviert <code>ufw</code>.</li>
+        <li><strong><code>ufw allow</code></strong>: Erlaubt den Zugriff auf einen bestimmten Port oder Dienst.<br>
+            Beispiel: <code>sudo ufw allow 80</code> - Erlaubt den HTTP-Zugriff (Port 80).</li>
+        <li><strong><code>ufw status</code></strong>: Zeigt den aktuellen Status der Firewall und alle aktiven Regeln an.<br>
+            Beispiel: <code>sudo ufw status</code> - Zeigt alle aktiven Regeln an.</li>
+    </ul>
+   
+  </div>
+</body>
+</html>

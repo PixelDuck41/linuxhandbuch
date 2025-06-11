@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+   <h1>Linux-Handbuch</h1>
+
+    
+
+    <h2>7. Dateisysteme und Partitionierung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+    <p>Die Partitionierung und Verwaltung von Dateisystemen ist ein wichtiger Bestandteil der Systemadministration. In diesem Abschnitt werden grundlegende Konzepte zu Dateisystemen, Partitionierung und deren Verwaltung auf Linux behandelt.</p>
+
+    <h3>Einführung in Dateisysteme</h3>
+    <p>Ein Dateisystem ist eine Methode zur Organisation von Daten auf einer Festplatte oder anderen Speichermedien. Linux unterstützt verschiedene Dateisysteme, und die Wahl des richtigen Dateisystems hängt von den Anforderungen des Systems ab. Zu den gängigsten Dateisystemen gehören:</p>
+
+    <ul>
+        <li><strong>ext4</strong>: Das gängigste Dateisystem für Linux-Distributionen. Es bietet eine hohe Leistung, Zuverlässigkeit und unterstützt grosse Dateien und Partitionen.</li>
+        <li><strong>XFS</strong>: Ein Hochleistungs-Dateisystem, das für grosse Datenmengen und Serverumgebungen optimiert ist.</li>
+        <li><strong>Btrfs</strong>: Ein modernes Copy-on-Write-Dateisystem, das Funktionen wie Snapshots und integrierte RAID-Unterstützung bietet.</li>
+        <li><strong>NTFS</strong>: Ein Dateisystem, das hauptsächlich von Windows verwendet wird, aber auch von Linux unterstützt wird, um mit Windows-Systemen kompatibel zu sein.</li>
+    </ul>
+
+    <h3>Partitionierung mit <code>fdisk</code>, <code>gdisk</code> und <code>parted</code></h3>
+    <p>Die Partitionierung einer Festplatte ist der Prozess, bei dem der Speicherplatz auf einem Gerät in mehrere logische Einheiten unterteilt wird, die als Partitionen bezeichnet werden. Linux bietet mehrere Werkzeuge, um Partitionen zu erstellen und zu verwalten.</p>
+
+    <ul>
+        <li><strong><code>fdisk</code></strong>: Ein Kommandozeilenwerkzeug zur Partitionierung von Festplatten. Es wird hauptsächlich für MBR (Master Boot Record)-Partitionen verwendet.</li>
+        <li><strong><code>gdisk</code></strong>: Ein ähnliches Werkzeug wie <code>fdisk</code>, jedoch speziell für GPT (GUID Partition Table)-Partitionen, die grössere Festplatten und mehr Partitionen unterstützen.</li>
+        <li><strong><code>parted</code></strong>: Ein weiteres Partitionierungswerkzeug, das sowohl MBR als auch GPT unterstützt und eine benutzerfreundliche Schnittstelle bietet.</li>
+    </ul>
+
+    <h4>Beispiel: Partitionierung mit <code>fdisk</code></h4>
+    <p>Um mit <code>fdisk</code> eine Festplatte zu partitionieren, kannst du den folgenden Befehl verwenden:</p>
+    <pre><code>sudo fdisk /dev/sda</code></pre>
+    <p>Dies öffnet die Festplatte <code>/dev/sda</code> zur Bearbeitung. Mit <code>n</code> kannst du eine neue Partition erstellen, mit <code>d</code> eine Partition löschen und mit <code>w</code> die Änderungen speichern.</p>
+
+    <h3>Festplatteneinbindung und Mounten</h3>
+    <p>Nachdem du eine Partition erstellt hast, musst du sie in das Dateisystem einbinden, damit du darauf zugreifen kannst. Dies wird als "Mounten" bezeichnet. Unter Linux wird das Verzeichnis, in dem eine Partition eingebunden wird, als "Mount-Punkt" bezeichnet.</p>
+
+    <ul>
+        <li><strong><code>mount</code></strong>: Wird verwendet, um eine Partition oder ein Dateisystem in das Verzeichnisbaum einzubinden.<br>
+            Beispiel: <code>sudo mount /dev/sda1 /mnt</code> - Bindet die Partition <code>/dev/sda1</code> in das Verzeichnis <code>/mnt</code> ein.</li>
+        <li><strong><code>umount</code></strong>: Wird verwendet, um eine Partition oder ein Dateisystem vom Dateisystem zu trennen.<br>
+            Beispiel: <code>sudo umount /mnt</code> - Trennt das gemountete Dateisystem im Verzeichnis <code>/mnt</code>.</li>
+    </ul>
+
+    <h3>Automatisches Mounten beim Systemstart</h3>
+    <p>Um eine Partition automatisch beim Systemstart zu mounten, kannst du die Datei <code>/etc/fstab</code> bearbeiten. Diese Datei enthält Informationen über alle Partitionen und deren Mount-Punkte.</p>
+
+    <ul>
+        <li><strong>Beispiel: Hinzufügen einer Partition zu <code>/etc/fstab</code></strong><br>
+            Öffne die Datei <code>/etc/fstab</code> mit einem Texteditor:<br>
+            <code>sudo nano /etc/fstab</code><br>
+            Füge die folgende Zeile hinzu, um die Partition <code>/dev/sda1</code> automatisch zu mounten:
+            <pre><code>/dev/sda1 /mnt ext4 defaults 0 2</code></pre>
+            Dies bedeutet, dass <code>/dev/sda1</code> beim Systemstart automatisch in <code>/mnt</code> gemountet wird, und das Dateisystem ist <code>ext4</code>.</li>
+    </ul>
+
+    <h3>Backup und Wiederherstellung von Daten</h3>
+    <p>Die regelmässige Sicherung von Daten ist eine wichtige Aufgabe für Administratoren. Linux bietet mehrere Werkzeuge zur Sicherung und Wiederherstellung von Daten:</p>
+
+    <ul>
+        <li><strong><code>rsync</code></strong>: Ein leistungsfähiges Tool zur Synchronisierung von Dateien und Verzeichnissen zwischen zwei Standorten.<br>
+            Beispiel: <code>rsync -av /home/user /mnt/backup</code> - Synchronisiert das Verzeichnis <code>/home/user</code> mit dem Verzeichnis <code>/mnt/backup</code>.</li>
+        <li><strong><code>tar</code></strong>: Ein Archivierungswerkzeug, das verwendet wird, um Daten in komprimierte Archive zu packen und zu entpacken.<br>
+            Beispiel: <code>tar -cvf backup.tar /home/user</code> - Erstellt ein Archiv des Verzeichnisses <code>/home/user</code>.</li>
+        <li><strong><code>dd</code></strong>: Ein Low-Level-Tool zur Sicherung und Wiederherstellung von Festplatten oder Partitionen.<br>
+            Beispiel: <code>sudo dd if=/dev/sda of=/mnt/backup.img</code> - Erstellt ein Abbild der Festplatte <code>/dev/sda</code> und speichert es als <code>backup.img</code>.</li>
+    </ul>
+
+    <h3>Verschlüsselung von Festplatten</h3>
+    <p>Linux bietet die Möglichkeit, Festplatten mit verschiedenen Methoden zu verschlüsseln, um die Sicherheit der Daten zu gewährleisten. Eine der gängigsten Methoden ist die Verwendung von <code>LUKS</code> (Linux Unified Key Setup).</p>
+
+    <ul>
+        <li><strong><code>cryptsetup</code></strong>: Ein Tool zur Verwaltung von verschlüsselten Festplatten.<br>
+            Beispiel: <code>sudo cryptsetup luksFormat /dev/sda1</code> - Verschlüsselt die Partition <code>/dev/sda1</code> mit LUKS.</li>
+        <li><strong><code>cryptsetup luksOpen</code></strong>: Öffnet eine verschlüsselte Partition.<br>
+            Beispiel: <code>sudo cryptsetup luksOpen /dev/sda1 crypt1</code> - Öffnet die Partition <code>/dev/sda1</code> und macht sie als <code>crypt1</code> verfügbar.</li>
+    </ul>
+   
+  </div>
+</body>
+</html>

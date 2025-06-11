@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>3. Benutzer und Gruppenverwaltung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+    
+
+    <h3>Erstellen und Verwalten von Benutzern</h3>
+    <p>In Linux-Systemen sind Benutzer die grundlegenden Entitäten, die auf das System zugreifen und mit ihm interagieren. Jede Datei und jedes Verzeichnis im Linux-Dateisystem gehört einem bestimmten Benutzer und einer bestimmten Gruppe. Das Erstellen und Verwalten von Benutzern ist ein wichtiger Aspekt der Systemadministration.</p>
+
+    <ul>
+        <li><strong><code>useradd</code></strong>: Dieser Befehl wird verwendet, um einen neuen Benutzer zu erstellen.<br>
+            Beispiel: <code>sudo useradd max</code> - Erstellt einen neuen Benutzer mit dem Namen `max`.
+        </li>
+        <li><strong><code>usermod</code></strong>: Mit diesem Befehl können Benutzerkonten geändert werden, z. B. um den Benutzernamen zu ändern oder den Benutzer in eine neue Gruppe zu verschieben.<br>
+            Beispiel: <code>sudo usermod -aG sudo max</code> - Fügt den Benutzer `max` zur Gruppe `sudo` hinzu, um Administratorrechte zu erhalten.
+        </li>
+        <li><strong><code>userdel</code></strong>: Mit diesem Befehl wird ein Benutzer gelöscht.<br>
+            Beispiel: <code>sudo userdel max</code> - Löscht den Benutzer `max` vom System.
+        </li>
+    </ul>
+
+    <h3>Erstellen und Verwalten von Gruppen</h3>
+    <p>Gruppen in Linux ermöglichen es, mehreren Benutzern gleichzeitig dieselben Berechtigungen zu erteilen. Benutzer können Mitglied mehrerer Gruppen sein, und die Verwaltung von Gruppen erleichtert die Rechtevergabe und -kontrolle.</p>
+
+    <ul>
+        <li><strong><code>groupadd</code></strong>: Dieser Befehl wird verwendet, um eine neue Gruppe zu erstellen.<br>
+            Beispiel: <code>sudo groupadd admin</code> - Erstellt die Gruppe `admin`.
+        </li>
+        <li><strong><code>groupdel</code></strong>: Löscht eine Gruppe aus dem System.<br>
+            Beispiel: <code>sudo groupdel admin</code> - Löscht die Gruppe `admin`.
+        </li>
+        <li><strong><code>gpasswd</code></strong>: Mit diesem Befehl kann ein Gruppenadministrator gesetzt oder das Passwort einer Gruppe geändert werden.<br>
+            Beispiel: <code>sudo gpasswd -A max admin</code> - Macht den Benutzer `max` zum Administrator der Gruppe `admin`.
+        </li>
+    </ul>
+
+    <h3>Zugriffsrechte und ACLs</h3>
+    <p>In Linux werden Zugriffsrechte über eine Kombination von Benutzer-, Gruppen- und anderen Berechtigungen gesteuert. Diese Berechtigungen legen fest, wer auf Dateien zugreifen darf und welche Operationen (Lesen, Schreiben, Ausführen) erlaubt sind.</p>
+
+    <ul>
+        <li><strong>Dateiberechtigungen</strong>: Jede Datei hat drei Arten von Berechtigungen:
+            <ul>
+                <li><strong>Lesen</strong> (`r`): Erlaubt das Anzeigen des Inhalts der Datei.</li>
+                <li><strong>Schreiben</strong> (`w`): Erlaubt das Bearbeiten der Datei.</li>
+                <li><strong>Ausführen</strong> (`x`): Erlaubt das Ausführen der Datei als Programm.</li>
+            </ul>
+        </li>
+        <li><strong><code>chmod</code> (Change Mode)</strong>: Mit diesem Befehl können die Berechtigungen einer Datei geändert werden.<br>
+            Beispiel: <code>chmod u+x datei.sh</code> - Fügt der Datei `datei.sh` das Ausführungsrecht für den Besitzer hinzu.
+        </li>
+        <li><strong><code>chown</code> (Change Owner)</strong>: Ändert den Eigentümer und/oder die Gruppe einer Datei.<br>
+            Beispiel: <code>sudo chown max:admin datei.txt</code> - Ändert den Besitzer der Datei `datei.txt` auf `max` und die Gruppe auf `admin`.
+        </li>
+        <li><strong><code>setfacl</code> (Set Access Control List)</strong>: Mit diesem Befehl können ACLs gesetzt werden.<br>
+            Beispiel: <code>setfacl -m u:max:rw datei.txt</code> - Gibt dem Benutzer `max` Lese- und Schreibrechte auf die Datei `datei.txt`.
+        </li>
+        <li><strong><code>getfacl</code> (Get Access Control List)</strong>: Zeigt die ACLs einer Datei an.<br>
+            Beispiel: <code>getfacl datei.txt</code> - Gibt die ACLs für die Datei `datei.txt` aus.
+        </li>
+    </ul>
+
+    <h3>sudo und root-Rechte</h3>
+    <p>In Linux-Systemen ist der <code>root</code>-Benutzer der Superuser und hat uneingeschränkten Zugriff auf alle Systemressourcen. Der Zugriff auf root-Rechte wird normalerweise durch den Befehl <code>sudo</code> gewährt, um sicherzustellen, dass Administratorrechte nur für autorisierte Benutzer zugänglich sind.</p>
+
+    <ul>
+        <li><strong><code>sudo</code></strong>: Mit diesem Befehl kann ein Benutzer Programme mit Administratorrechten ausführen.<br>
+            Beispiel: <code>sudo apt-get update</code> - Führt den Befehl `apt-get update` mit Administratorrechten aus.
+        </li>
+        <li><strong><code>visudo</code></strong>: Dieser Befehl öffnet die <code>sudoers</code>-Datei, die die Rechte von Benutzern und Gruppen verwaltet, um <code>sudo</code>-Zugriff zu gewähren.<br>
+            Beispiel: <code>sudo visudo</code> - Öffnet die Datei zur Konfiguration der `sudo`-Berechtigungen.
+        </li>
+    </ul>
+
+    <h3>Passwortverwaltung</h3>
+    <p>In Linux können Passwörter für Benutzer über verschiedene Befehle verwaltet werden:</p>
+
+    <ul>
+        <li><strong><code>passwd</code></strong>: Mit diesem Befehl können Passwörter für Benutzer geändert werden.<br>
+            Beispiel: <code>sudo passwd max</code> - Ändert das Passwort für den Benutzer `max`.
+        </li>
+        <li><strong><code>chage</code></strong>: Dieser Befehl wird verwendet, um die Passwortablaufzeit und die Mindestdauer für das Passwort eines Benutzers festzulegen.<br>
+            Beispiel: <code>sudo chage -l max</code> - Zeigt die Passwortinformationen für den Benutzer `max` an.
+        </li>
+    </ul>
+
+    <h3>Weitere Tipps zur Benutzerverwaltung</h3>
+    <ul>
+        <li><strong>Versteckte Benutzer</strong>: Einige Linux-Programme benötigen spezielle Benutzerkonten, die keine Login-Rechte haben und in der Regel nicht im System erscheinen. Diese Benutzer beginnen häufig mit einem Unterstrich (z.B. <code>_www</code> für den Webserver).</li>
+        <li><strong>Benutzergruppen</strong>: Benutzergruppen sind eine effektive Möglichkeit, Benutzern mit ähnlichen Aufgaben oder Rechten gemeinsam Berechtigungen zuzuweisen.</li>
+    </ul>
+  </div>
+</body>
+</html>

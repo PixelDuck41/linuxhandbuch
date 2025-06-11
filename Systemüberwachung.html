@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+  <h1>Linux-Handbuch</h1>
+
+    
+
+    <h2>6. Systemüberwachung und -verwaltung</h2>
+    <a href="index.html"> Zurück zum Start</a>
+
+
+    <p>Die Systemüberwachung und -verwaltung sind entscheidend, um die Leistung des Systems zu überwachen, Probleme zu diagnostizieren und das System effizient zu verwalten. In diesem Abschnitt werden gängige Tools und Befehle beschrieben, mit denen du dein System überwachen und die Nutzung von Ressourcen wie CPU, RAM und Festplatten überwachen kannst.</p>
+
+    <h3>Systemressourcen überwachen</h3>
+    <p>Die Überwachung von Systemressourcen wie CPU, RAM und Festplattenspeicher hilft dir, die Leistung deines Systems zu überprüfen und sicherzustellen, dass es optimal läuft. Die folgenden Tools sind die gängigsten zur Überwachung von Ressourcen:</p>
+
+    <ul>
+        <li><strong><code>top</code></strong>: Ein interaktives Werkzeug zur Anzeige der Systemressourcen und der aktuell laufenden Prozesse. Es zeigt eine Echtzeitansicht der CPU- und Speichernutzung.<br>
+            Beispiel: <code>top</code> - Zeigt die aktuelle Auslastung von CPU und Arbeitsspeicher sowie die laufenden Prozesse an.</li>
+        <li><strong><code>htop</code></strong>: Eine verbesserte Version von <code>top</code> mit einer benutzerfreundlicheren grafischen Oberfläche.<br>
+            Beispiel: <code>htop</code> - Zeigt eine detailliertere Ansicht der Systemressourcen an.</li>
+        <li><strong><code>free</code></strong>: Zeigt Informationen zur Nutzung von Arbeitsspeicher und Swap-Speicher.<br>
+            Beispiel: <code>free -h</code> - Zeigt den Speicherverbrauch in einer menschenlesbaren Form an (z. B. MB, GB).</li>
+        <li><strong><code>vmstat</code></strong>: Zeigt Informationen über den virtuellen Speicher, Prozesse, CPU-Aktivitäten und mehr.<br>
+            Beispiel: <code>vmstat</code> - Gibt eine Übersicht über Systemstatistiken wie Speicher, I/O und CPU-Aktivität aus.</li>
+    </ul>
+
+    <h3>Prozesse und Dienste verwalten</h3>
+    <p>Die Verwaltung von Systemprozessen und -diensten ist wichtig, um die Leistung des Systems sicherzustellen. Linux bietet mehrere Tools, um die Prozesse zu überwachen und zu steuern:</p>
+
+    <ul>
+        <li><strong><code>ps</code></strong>: Zeigt eine Liste der aktuellen Prozesse an.<br>
+            Beispiel: <code>ps aux</code> - Zeigt alle Prozesse auf dem System an, einschliesslich der Prozesse von anderen Benutzern.</li>
+        <li><strong><code>kill</code></strong>: Wird verwendet, um einen laufenden Prozess zu beenden.<br>
+            Beispiel: <code>kill 1234</code> - Beendet den Prozess mit der ID 1234.</li>
+        <li><strong><code>killall</code></strong>: Beendet alle Prozesse mit einem bestimmten Namen.<br>
+            Beispiel: <code>killall firefox</code> - Beendet alle laufenden Firefox-Prozesse.</li>
+        <li><strong><code>systemctl</code></strong>: Wird verwendet, um systemweite Dienste zu starten, zu stoppen und zu verwalten. Es ist das Haupttool zur Verwaltung von Systemdiensten unter systemd.<br>
+            Beispiel: <code>sudo systemctl start apache2</code> - Startet den Apache2-Webserver-Dienst.</li>
+        <li><strong><code>service</code></strong>: Ein älterer Befehl, der für die Verwaltung von Systemdiensten verwendet wird. Er wird in modernen Distributionen, die <code>systemd</code> verwenden, noch unterstützt.<br>
+            Beispiel: <code>sudo service apache2 start</code> - Startet den Apache2-Webserver-Dienst.</li>
+    </ul>
+
+    <h3>Log-Dateien überwachen</h3>
+    <p>Log-Dateien sind wertvolle Quellen für die Fehlerbehebung und die Überwachung von Systemereignissen. Sie bieten Informationen über das Verhalten des Systems und können helfen, Probleme schnell zu identifizieren.</p>
+
+    <ul>
+        <li><strong><code>journalctl</code></strong>: Ein Tool, das mit <code>systemd</code> arbeitet und eine Protokollierung von Systemereignissen bietet. Es ermöglicht das Durchsuchen und Filtern von Systemprotokollen.<br>
+            Beispiel: <code>sudo journalctl -xe</code> - Zeigt die neuesten Systemprotokolle und Fehlermeldungen an.</li>
+        <li><strong><code>tail</code></strong>: Zeigt die letzten Zeilen einer Datei an. Wird oft verwendet, um die letzten Protokolleinträge in Echtzeit zu überwachen.<br>
+            Beispiel: <code>tail -f /var/log/syslog</code> - Zeigt die neuesten Zeilen der Systemlogdatei an und aktualisiert sie live.</li>
+        <li><strong><code>less</code></strong>: Ein Pager-Programm, das die Anzeige von Dateien erleichtert. Es wird häufig verwendet, um grosse Log-Dateien zu durchsuchen.<br>
+            Beispiel: <code>less /var/log/syslog</code> - Öffnet die Datei `syslog` in einem interaktiven Pager.</li>
+    </ul>
+
+    <h3>Systemleistung optimieren</h3>
+    <p>Die Optimierung der Systemleistung ist ein kontinuierlicher Prozess, der die richtige Konfiguration und regelmässige Überwachung erfordert. Einige gängige Methoden zur Leistungsoptimierung sind:</p>
+
+    <ul>
+        <li><strong>CPU-Auslastung minimieren</strong>: Vermeide unnötige Prozesse, die viel CPU-Leistung verbrauchen, indem du Prozesse beendest oder automatisierte Tasks besser optimierst.</li>
+        <li><strong>Speicher effizient nutzen</strong>: Achte auf den effektiven Einsatz von RAM und Swap-Speicher. Bei Engpässen können Performance-Probleme auftreten.</li>
+        <li><strong>Festplattenplatz freigeben</strong>: Nutze Tools wie <code>du</code> (Disk Usage) und <code>df</code> (Disk Free), um Speicherplatz zu überwachen und nicht benötigte Dateien zu entfernen.</li>
+    </ul>
+
+    <h3>Cronjobs und Zeitplanung</h3>
+    <p>Cronjobs sind geplante Aufgaben, die zu einem festgelegten Zeitpunkt oder in regelmässigen Abständen ausgeführt werden. Sie sind ein wichtiger Bestandteil der Automatisierung in Linux-Systemen.</p>
+
+    <ul>
+        <li><strong><code>crontab</code></strong>: Mit diesem Befehl kannst du Cronjobs für den aktuellen Benutzer verwalten.<br>
+            Beispiel: <code>crontab -e</code> - Öffnet den Crontab-Editor, um geplante Aufgaben hinzuzufügen oder zu bearbeiten.</li>
+        <li><strong><code>cron</code></strong>: Der Cron-Daemon ist verantwortlich für die Ausführung der geplanten Jobs.<br>
+            Beispiel: Cronjobs werden automatisch im Hintergrund ausgeführt, wenn der Cron-Daemon läuft.</li>
+        <li><strong><code>at</code></strong>: Mit diesem Befehl können einmalige Aufgaben zu einem bestimmten Zeitpunkt geplant werden.<br>
+            Beispiel: <code>echo "bash /path/to/script.sh" | at 03:00</code> - Führt das Skript um 03:00 Uhr aus.</li>
+    </ul>
+   
+  </div>
+</body>
+</html>

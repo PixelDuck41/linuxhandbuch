@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Linux Handbuch</h1>
+
+    </form>
+    
+    <p>Willkommen beim Linux Handbuch – eine einfache Einführung in die Welt des freien Betriebssystems.</p>
+    
+
+    <hr>
+    <h3>1. Einführung in Linux</h3> 
+    <ul>
+      <li>Was ist Linux?</li>
+      <li>Die verschiedenen Linux-Distributionen</li>
+      <li>Was ist der Linux-Kernel?</li>
+      <li>Open-Source-Philosophie</li>
+      <li>Vorteile von Linux</li>
+    </ul>
+    
+    
+    <a href="einfuehrung.html">Mehr Erfahren!</a> 
+    <hr>
+
+    <h3>2. Grundlagen der Linux-Shell</h3> 
+    <ul>
+      <li>Was ist Linux?</li>
+      <li>Was ist die Shell?</li>
+      <li>Überblick über die gängigsten Shells</li>
+      <li>Navigation im Dateisystem </li>
+      <li>Dateimanagement</li>
+      <li>Berechtigungen und Eigentümer</li>
+      <li>Suchen von Dateien</li>
+    </ul>
+    
+
+    <a href="shellgrundlage.html">Mehr Erfahren!</a>
+    <hr> 
+    <h3>3. Benutzer und Gruppenverwaltung</h3> 
+    <ul>
+      <li>Erstellen und Verwalten von Benutzern (useradd, usermod, userdel)</li>
+      <li>Erstellen und Verwalten von Gruppen (groupadd, groupdel)</li>     
+      <li>Zugriffsrechte und ACLs</li>
+      <li>sudo und root-Rechte</li>
+      <li>Passwortverwaltung (passwd, chage)</li>
+    </ul>
+    
+
+    <a href="benutzerundgruppen.html">Mehr Erfahren!</a>
+    <hr>
+
+   
+    
+    <h3>4. Paketverwaltung</h3> 
+    <ul>
+      <li>Paketmanagement mit apt (Debian, Ubuntu), dnf (Fedora), yum (CentOS, RHEL)</li>
+      <li>Installation, Entfernung und Aktualisierung von Software</li>
+      <li>Suchen von Paketen</li>
+      <li>Repositorys und PPA (Personal Package Archives)</li>
+      <li>Softwarequellen konfigurieren</li>
+    </ul>
+
+
+
+    <a href="Paketverwaltung.html">Mehr Erfahren!</a>
+    <hr>
+      
+    <h3>5. Netzwerkverwaltung</h3> 
+    <ul>
+      <li>Netzwerkkonfiguration (IP-Adressen, Subnetze, Gateways)</li>
+      <li>Konfiguration von Netzwerkinterfaces (ifconfig, ip)</li>
+      <li>Netzwerkanalyse und Fehlerbehebung (ping, traceroute, netstat, ss)</li>
+      <li>Firewall und Sicherheit (iptables, ufw, firewalld)</li>
+      <li>VPN-Setup (z.B. OpenVPN, WireGuard)</li>
+      <li>DNS-Verwaltung und Konfiguration</li>
+    </ul>
+
+
+
+    <a href="Netzwerkverwaltung.html">Mehr Erfahren!</a>
+
+    <hr>
+
+    <h3>6. Systemüberwachung und -verwaltung</h3> 
+    <ul>
+      <li>Systemressourcen überwachen (CPU, RAM, Festplattennutzung, top, htop, vmstat)</li>
+      <li>Log-Dateien (z.B. /var/log, journalctl)</li>
+      <li>Systemprozesse und -dienste (z.B. ps, systemctl, service)</li>
+      <li>Systemleistung optimieren</li>
+      <li>Cronjobs und Zeitplanung (cron, at)</li>
+      
+    </ul>
+
+
+
+    <a href="Systemüberwachung.html">Mehr Erfahren!</a>
+
+    <hr>
+    
+    <h3>7. Dateisysteme und Partitionierung</h3> 
+    <ul>
+      <li>Einführung in Dateisysteme (ext4, XFS, Btrfs, NTFS)</li>
+      <li>Partitionierung mit fdisk, gdisk, parted</li>
+      <li>Festplatteneinbindung und Mounten</li>
+      <li>Backup und Wiederherstellung von Daten (rsync, tar, dd)</li>
+      <li>Verschlüsselung von Festplatten (z.B. LUKS)</li>
+    </ul>
+
+
+
+    <a href="Dateisysteme.html">Mehr Erfahren!</a>
+
+    <hr>
+
+    
+    <h3>8. Sicherheit und Benutzerzugriffssteuerung</h3> 
+    <ul>
+      <li>SELinux und AppArmor</li>
+      <li>Firewall-Konfiguration</li>
+      <li>SSH (sicherer Fernzugriff)</li>
+      <li>Sicherheitsupdates und Patches</li>
+      <li>Überwachung von Benutzeraktivitäten (z.B. auditd)</li>
+    </ul>
+
+
+
+    <a href="Sicherheit.html">Mehr Erfahren!</a>
+
+  
+    <hr>
+
+    
+    <h3>9. Systemstart und -shutdown</h3> 
+    <ul>
+      <li>Bootprozess und Init-Systeme (SysVinit, Upstart, systemd)</li>
+      <li>Verwaltung von Boot-Parametern</li>
+      <li>Services und Daemons</li>
+      <li>Boot-Manager (GRUB)</li>
+    </ul>
+
+
+
+    <a href="Systemstart.html">Mehr Erfahren!</a>
+
+    <hr>
+
+    
+    <h3>10. Virtualisierung</h3> 
+    <ul>
+      <li>Einführung in Virtualisierung (KVM, VirtualBox, VMware)</li>
+      <li>Einrichtung von virtuellen Maschinen</li>
+      <li>Virtualisierungs-Tools und -Befehle (z.B. virsh, qemu)</li>
+      <li>Containerisierung mit Docker und Podman</li>
+    </ul>
+
+
+
+    <a href="Virtualisierung.html">Mehr Erfahren!</a>
+
+    <hr>
+
+        <h2>Alle Befehle aus den Abschnitten 1 bis 10</h2>
+
+    <p>Diese Tabelle listet alle gängigen Linux-Befehle aus den verschiedenen Abschnitten des Handbuchs sowie grundlegende Systembefehle auf. Sie dient als schnelle Referenz für die Arbeit mit Linux-Systemen.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Befehl</th>
+                <th>Beschreibung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Abschnitt 1: Einführung in Linux -->
+            <tr>
+                <td><code>ls</code></td>
+                <td>Listet Dateien und Verzeichnisse im aktuellen Verzeichnis auf.</td>
+            </tr>
+            <tr>
+                <td><code>cd</code></td>
+                <td>Wechselt in ein anderes Verzeichnis.</td>
+            </tr>
+            <tr>
+                <td><code>pwd</code></td>
+                <td>Zeigt den aktuellen Pfad des Arbeitsverzeichnisses an.</td>
+            </tr>
+            <tr>
+                <td><code>cp</code></td>
+                <td>Kopiert Dateien und Verzeichnisse.</td>
+            </tr>
+            <tr>
+                <td><code>mv</code></td>
+                <td>Verschiebt oder benennt Dateien und Verzeichnisse um.</td>
+            </tr>
+            <tr>
+                <td><code>rm</code></td>
+                <td>Löscht Dateien und Verzeichnisse.</td>
+            </tr>
+            <tr>
+                <td><code>touch</code></td>
+                <td>Erstellt eine neue leere Datei oder ändert das Datum einer bestehenden Datei.</td>
+            </tr>
+
+            <!-- Abschnitt 2: Grundlagen der Linux-Shell -->
+            <tr>
+                <td><code>chmod</code></td>
+                <td>Ändert die Berechtigungen einer Datei oder eines Verzeichnisses.</td>
+            </tr>
+            <tr>
+                <td><code>chown</code></td>
+                <td>Ändert den Besitzer einer Datei oder eines Verzeichnisses.</td>
+            </tr>
+            <tr>
+                <td><code>chgrp</code></td>
+                <td>Ändert die Gruppe einer Datei oder eines Verzeichnisses.</td>
+            </tr>
+            <tr>
+                <td><code>find</code></td>
+                <td>Findet Dateien und Verzeichnisse basierend auf verschiedenen Kriterien.</td>
+            </tr>
+            <tr>
+                <td><code>grep</code></td>
+                <td>Sucht nach Textmustern in Dateien.</td>
+            </tr>
+
+            <!-- Abschnitt 3: Benutzer- und Gruppenverwaltung -->
+            <tr>
+                <td><code>useradd</code></td>
+                <td>Erstellt einen neuen Benutzer.</td>
+            </tr>
+            <tr>
+                <td><code>usermod</code></td>
+                <td>Ändert ein Benutzerkonto.</td>
+            </tr>
+            <tr>
+                <td><code>userdel</code></td>
+                <td>Löscht ein Benutzerkonto.</td>
+            </tr>
+            <tr>
+                <td><code>groupadd</code></td>
+                <td>Erstellt eine neue Gruppe.</td>
+            </tr>
+            <tr>
+                <td><code>groupdel</code></td>
+                <td>Löscht eine Gruppe.</td>
+            </tr>
+            <tr>
+                <td><code>chage</code></td>
+                <td>Ändert das Ablaufdatum des Passworts eines Benutzers.</td>
+            </tr>
+            <tr>
+                <td><code>passwd</code></td>
+                <td>Ändert das Passwort eines Benutzers.</td>
+            </tr>
+
+            <!-- Abschnitt 4: Paketverwaltung -->
+            <tr>
+                <td><code>apt update</code></td>
+                <td>Aktualisiert die Paketdatenbank (Debian, Ubuntu).</td>
+            </tr>
+            <tr>
+                <td><code>apt upgrade</code></td>
+                <td>Aktualisiert alle installierten Pakete auf die neueste Version.</td>
+            </tr>
+            <tr>
+                <td><code>apt install</code></td>
+                <td>Installiert ein neues Paket (Debian, Ubuntu).</td>
+            </tr>
+            <tr>
+                <td><code>apt remove</code></td>
+                <td>Entfernt ein Paket (Debian, Ubuntu).</td>
+            </tr>
+            <tr>
+                <td><code>dnf install</code></td>
+                <td>Installiert ein Paket (Fedora).</td>
+            </tr>
+            <tr>
+                <td><code>yum update</code></td>
+                <td>Aktualisiert alle Pakete (CentOS, RHEL).</td>
+            </tr>
+            <tr>
+                <td><code>yum install</code></td>
+                <td>Installiert ein Paket (CentOS, RHEL).</td>
+            </tr>
+
+            <!-- Abschnitt 5: Netzwerkverwaltung -->
+            <tr>
+                <td><code>ifconfig</code></td>
+                <td>Zeigt oder konfiguriert Netzwerkschnittstellen (deprecated in vielen Distributionen, ersetzt durch <code>ip</code>).</td>
+            </tr>
+            <tr>
+                <td><code>ip a</code></td>
+                <td>Zeigt alle Netzwerkinterfaces und deren IP-Adressen an.</td>
+            </tr>
+            <tr>
+                <td><code>ping</code></td>
+                <td>Testet die Netzwerkverbindung zu einem anderen Host.</td>
+            </tr>
+            <tr>
+                <td><code>traceroute</code></td>
+                <td>Verfolgt den Pfad von Paketen zu einem Zielhost.</td>
+            </tr>
+            <tr>
+                <td><code>netstat</code></td>
+                <td>Zeigt Netzwerkverbindungen, Routing-Tabellen und Netzwerkstatistiken an.</td>
+            </tr>
+            <tr>
+                <td><code>ss</code></td>
+                <td>Zeigt Informationen zu Sockets und Netzwerkverbindungen an (moderner Ersatz für <code>netstat</code>).</td>
+            </tr>
+
+            <!-- Abschnitt 6: Systemüberwachung und -verwaltung -->
+            <tr>
+                <td><code>top</code></td>
+                <td>Zeigt eine Echtzeitübersicht über die CPU- und Speichernutzung sowie laufende Prozesse.</td>
+            </tr>
+            <tr>
+                <td><code>htop</code></td>
+                <td>Erweiterte Version von <code>top</code> mit einer benutzerfreundlicheren Oberfläche.</td>
+            </tr>
+            <tr>
+                <td><code>free</code></td>
+                <td>Zeigt Informationen über den verfügbaren und verwendeten Arbeitsspeicher und Swap-Speicher.</td>
+            </tr>
+            <tr>
+                <td><code>vmstat</code></td>
+                <td>Zeigt Informationen über den virtuellen Speicher und Systemaktivitäten an.</td>
+            </tr>
+            <tr>
+                <td><code>ps</code></td>
+                <td>Zeigt die derzeit laufenden Prozesse an.</td>
+            </tr>
+            <tr>
+                <td><code>kill</code></td>
+                <td>Beendet einen laufenden Prozess anhand seiner PID.</td>
+            </tr>
+            <tr>
+                <td><code>systemctl</code></td>
+                <td>Verwaltet systemweite Dienste unter systemd (Starten, Stoppen, Neustarten von Diensten).</td>
+            </tr>
+            <tr>
+                <td><code>journalctl</code></td>
+                <td>Zeigt Systemprotokolle an, die von <code>systemd</code> verwaltet werden.</td>
+            </tr>
+
+            <!-- Abschnitt 7: Dateisysteme und Partitionierung -->
+            <tr>
+                <td><code>fdisk</code></td>
+                <td>Werkzeug zur Partitionierung von Festplatten (MBR-Partitionen).</td>
+            </tr>
+            <tr>
+                <td><code>parted</code></td>
+                <td>Partitionierungstool, das sowohl MBR als auch GPT unterstützt.</td>
+            </tr>
+            <tr>
+                <td><code>mount</code></td>
+                <td>Binde ein Dateisystem oder eine Partition in das Verzeichnisbaum ein.</td>
+            </tr>
+            <tr>
+                <td><code>umount</code></td>
+                <td>Trenne eine Partition oder ein Dateisystem vom Dateisystem.</td>
+            </tr>
+            <tr>
+                <td><code>rsync</code></td>
+                <td>Synchronisiert Dateien und Verzeichnisse zwischen verschiedenen Orten.</td>
+            </tr>
+            <tr>
+                <td><code>tar</code></td>
+                <td>Erstellt und extrahiert Archivdateien (z. B. .tar.gz).</td>
+            </tr>
+            <tr>
+                <td><code>dd</code></td>
+                <td>Erstellt Festplattenabbilder und kopiert Daten auf Blockebene.</td>
+            </tr>
+            <tr>
+                <td><code>cryptsetup</code></td>
+                <td>Verwaltet Festplattenverschlüsselung mit LUKS.</td>
+            </tr>
+
+            <!-- Abschnitt 8: Sicherheit und Benutzerzugriffssteuerung -->
+            <tr>
+                <td><code>iptables</code></td>
+                <td>Verwalte Netzwerk-Firewall-Regeln auf der Basis von <code>iptables</code>.</td>
+            </tr>
+            <tr>
+                <td><code>ufw</code></td>
+                <td>Benutzerfreundliches Frontend für die Konfiguration von <code>iptables</code>.</td>
+            </tr>
+            <tr>
+                <td><code>firewalld</code></td>
+                <td>Verwalte Firewall-Regeln unter <code>firewalld</code>.</td>
+            </tr>
+            <tr>
+                <td><code>ssh</code></td>
+                <td>Verbindet sich sicher mit einem entfernten Linux-Server über das SSH-Protokoll.</td>
+            </tr>
+            <tr>
+                <td><code>auditd</code></td>
+                <td>Überwacht und protokolliert Sicherheitsereignisse im System.</td>
+            </tr>
+
+            <!-- Abschnitt 9: Systemstart und -shutdown -->
+            <tr>
+                <td><code>systemctl reboot</code></td>
+                <td>Startet das System neu.</td>
+            </tr>
+            <tr>
+                <td><code>systemctl poweroff</code></td>
+                <td>Fährt das System herunter.</td>
+            </tr>
+            <tr>
+                <td><code>grub-mkconfig</code></td>
+                <td>Erstellt eine neue GRUB-Konfigurationsdatei.</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</body>
+</html>
+

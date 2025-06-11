@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Handbuch</title>
+  <style>
+    body {
+      background-color: #000;
+      color: rgb(255, 255, 255);
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: "- ";
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed rgb(255, 255, 255);
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1>Linux-Handbuch</h1>
+
+    <h2>4. Paketverwaltung</h2>
+
+    <a href="index.html"> Zurück zum Start</a>
+
+    <p>Die Paketverwaltung ist ein zentraler Bestandteil der Linux-Administration. Sie ermöglicht es, Software zu installieren, zu aktualisieren und zu entfernen. Jede Distribution hat ihre eigene Paketverwaltung, aber viele von ihnen verwenden ähnliche Konzepte, wie Repositories (Paketquellen), die Softwarepakete enthalten.</p>
+
+    <h3>Paketmanagement mit <code>apt</code> (Debian, Ubuntu)</h3>
+    <p>Die <code>apt</code>-Paketverwaltung (Advanced Package Tool) wird in Debian und Ubuntu sowie deren Derivaten verwendet. Mit <code>apt</code> können Pakete aus offiziellen Repositories heruntergeladen, installiert, aktualisiert und entfernt werden.</p>
+
+    <ul>
+        <li><strong><code>apt update</code></strong>: Aktualisiert die lokale Paketdatenbank, um sicherzustellen, dass die neuesten Versionen von Paketen verfügbar sind.<br>
+            Beispiel: <code>sudo apt update</code> - Aktualisiert die Paketdatenbank.</li>
+        <li><strong><code>apt upgrade</code></strong>: Aktualisiert alle installierten Pakete auf die neuesten verfügbaren Versionen.<br>
+            Beispiel: <code>sudo apt upgrade</code> - Aktualisiert alle Pakete.</li>
+        <li><strong><code>apt install</code></strong>: Installiert ein neues Paket aus den Repositories.<br>
+            Beispiel: <code>sudo apt install firefox</code> - Installiert den Webbrowser Firefox.</li>
+        <li><strong><code>apt remove</code></strong>: Entfernt ein installiertes Paket.<br>
+            Beispiel: <code>sudo apt remove firefox</code> - Entfernt Firefox vom System.</li>
+        <li><strong><code>apt autoremove</code></strong>: Entfernt automatisch nicht mehr benötigte Pakete, die von anderen Programmen nicht mehr verwendet werden.<br>
+            Beispiel: <code>sudo apt autoremove</code> - Entfernt nicht mehr benötigte Pakete.</li>
+    </ul>
+
+    <h3>Paketmanagement mit <code>dnf</code> (Fedora)</h3>
+    <p>Die <code>dnf</code>-Paketverwaltung ist die Standardpaketverwaltung in Fedora und anderen Red Hat-basierten Distributionen. Sie bietet eine einfachere und schnellere Möglichkeit, Pakete zu verwalten.</p>
+
+    <ul>
+        <li><strong><code>dnf check-update</code></strong>: Überprüft, ob Updates für installierte Pakete verfügbar sind.<br>
+            Beispiel: <code>sudo dnf check-update</code> - Überprüft auf verfügbare Updates.</li>
+        <li><strong><code>dnf install</code></strong>: Installiert ein neues Paket aus den Repositories.<br>
+            Beispiel: <code>sudo dnf install firefox</code> - Installiert Firefox.</li>
+        <li><strong><code>dnf update</code></strong>: Aktualisiert alle installierten Pakete auf die neueste Version.<br>
+            Beispiel: <code>sudo dnf update</code> - Aktualisiert alle Pakete.</li>
+        <li><strong><code>dnf remove</code></strong>: Entfernt ein installiertes Paket.<br>
+            Beispiel: <code>sudo dnf remove firefox</code> - Entfernt Firefox.</li>
+    </ul>
+
+    <h3>Paketmanagement mit <code>yum</code> (CentOS, RHEL)</h3>
+    <p>Das <code>yum</code> (Yellowdog Updater, Modified)-Tool wird in älteren Versionen von Red Hat Enterprise Linux (RHEL) und CentOS verwendet. In neueren Versionen wurde es durch <code>dnf</code> ersetzt, aber viele Systeme verwenden immer noch <code>yum</code> für Paketverwaltung.</p>
+
+    <ul>
+        <li><strong><code>yum update</code></strong>: Aktualisiert alle installierten Pakete auf die neueste Version.<br>
+            Beispiel: <code>sudo yum update</code> - Aktualisiert alle Pakete.</li>
+        <li><strong><code>yum install</code></strong>: Installiert ein neues Paket aus den Repositories.<br>
+            Beispiel: <code>sudo yum install firefox</code> - Installiert Firefox.</li>
+        <li><strong><code>yum remove</code></strong>: Entfernt ein installiertes Paket.<br>
+            Beispiel: <code>sudo yum remove firefox</code> - Entfernt Firefox.</li>
+    </ul>
+
+    <h3>Installation von Software-Paketen</h3>
+    <p>Die Installation von Software erfolgt in der Regel aus den offiziellen Repositories, die von der Distribution bereitgestellt werden. Dies stellt sicher, dass die Software kompatibel mit dem System ist und regelmässig Updates erhält.</p>
+    
+    <p>Zusätzlich zu den standardmässigen Paketquellen bieten einige Distributionen die Möglichkeit, zusätzliche Software-Quellen zu konfigurieren, sogenannte Personal Package Archives (PPA) für Ubuntu und Debian oder zusätzliche Repositories für andere Distributionen.</p>
+
+    <h3>Repositorys und PPA (Personal Package Archives)</h3>
+    <p>Repositories sind Sammlungen von Software-Paketen, die über das Internet zugänglich sind. Sie ermöglichen es dem System, Software zu installieren, die durch die Distribution gepflegt wird. Benutzer können auch PPA hinzufügen, um Software zu installieren, die nicht in den offiziellen Repositories enthalten ist.</p>
+    
+    <h4>Beispiel: Hinzufügen eines PPAs in Ubuntu</h4>
+    <ul>
+        <li><strong><code>sudo add-apt-repository ppa:example/ppa</code></strong>: Fügt ein neues PPA zu den Quellen von Ubuntu hinzu.<br>
+            Beispiel: <code>sudo add-apt-repository ppa:some/ppa</code> - Fügt das PPA `some/ppa` hinzu.</li>
+        <li><strong><code>sudo apt update</code></strong>: Aktualisiert die Paketdatenbank nach dem Hinzufügen eines neuen PPAs.</li>
+    </ul>
+
+    <h3>Softwarequellen konfigurieren</h3>
+    <p>Die Konfiguration von Softwarequellen ist oft erforderlich, wenn du neue Repositories hinzufügst oder standardmässig auf eine andere Quelle umschalten möchtest. Diese Konfiguration erfolgt normalerweise durch Bearbeiten von Dateien wie <code>/etc/apt/sources.list</code> (für Debian-basierte Systeme) oder durch Verwendung von GUI-Tools wie dem Software & Update-Manager in Ubuntu.</p>
+
+    <p>Du kannst auch die Konfiguration von Repositories in anderen Distributionen wie Fedora über <code>dnf</code> oder CentOS über <code>yum</code> anpassen, um neue Quellen zu aktivieren.</p>
+
+
+  </div>
+</body>
+</html>
